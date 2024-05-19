@@ -16,8 +16,6 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // set up toastify
-
   const [login, { isLoading, error }] = useLoginMutation();
 
   const { userInfo } = useSelector((state) => state.auth);

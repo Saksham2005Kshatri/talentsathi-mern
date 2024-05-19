@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import { useLogoutMutation } from "../slices/usersApiSlice";
 import { clearCredentials } from "../slices/authSlice";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Header = () => {
   // get the userinfo
@@ -18,6 +20,7 @@ const Header = () => {
     try {
       await logout().unwrap();
       dispatch(clearCredentials());
+      toast.success("Logged out!");
       navigate("/");
     } catch (error) {
       console.log(error);

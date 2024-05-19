@@ -21,7 +21,11 @@ const Hero = () => {
             <div className="text-white">
               <h1 className="mb-3">TalentSathi-Mern</h1>
               <p className="mb-3">
-                This is a full stack web app for authentication
+                For this project, I'll create an authentication system where
+                users can sign up, log in, view their profile, change their
+                profile details, and delete their account. The frontend is built
+                using React.js, while the backend is built using Node.js and
+                Express.
               </p>
               <LinkContainer to="/login">
                 <Button
