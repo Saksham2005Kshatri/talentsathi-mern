@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Loader from "./Loader";
 import { useSignupMutation } from "../slices/usersApiSlice";
 import { setCredentials } from "../slices/authSlice";
+import styles from "./signup.module.css";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -22,13 +23,16 @@ const Signup = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const [msg, setMsg] = useState("");
+
   const [signup, { isLoading }] = useSignupMutation();
 
   const { userInfo } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (userInfo) {
-      navigate("/profile");
+      // navigate("/profile");
+      console.log("User info exists");
     }
   }, [navigate, userInfo]);
 
@@ -47,8 +51,10 @@ const Signup = () => {
           job,
           phoneNumber,
         }).unwrap(); // unwrap the promise
-        dispatch(setCredentials({ ...res }));
-        navigate("/profile");
+        // dispatch(setCredentials({ ...res }));
+        // navigate("/profile");
+        console.log(`Here is the res.message: ${res.message}`);
+        setMsg(res.message);
       } catch (error) {
         toast.error(error.data.message || error.error);
       }
@@ -147,6 +153,8 @@ const Signup = () => {
         </Form.Group>
 
         {isLoading && <Loader />}
+
+        {msg && <div className={styles.success_msg}>{msg}</div>}
 
         <Button
           variant="primary"

@@ -16,6 +16,7 @@ import LoginScreen from "./screens/LoginScreen.js";
 import SignupScreen from "./screens/SignupScreen.js";
 import ProfileScreen from "./screens/ProfileScreen.js";
 import UpdateScreen from "./screens/UpdateScreen.js";
+import EmailVerify from "./components/EmailVerify/index.js";
 import PrivateRoute from "./components/PrivateRoute.js";
 
 const router = createBrowserRouter(
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
       <Route index={true} path="/" element={<HomeScreen />} />
       <Route path="/login" element={<LoginScreen />} />
       <Route path="/signup" element={<SignupScreen />} />
+      <Route path="/auth/signup/:id/verify/:token" element={<EmailVerify />} />
       <Route path="" element={<PrivateRoute />}>
         <Route path="/profile" element={<ProfileScreen />} />
         <Route path="/profile/update" element={<UpdateScreen />} />

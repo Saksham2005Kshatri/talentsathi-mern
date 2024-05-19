@@ -2,6 +2,9 @@ import asyncHandler from "express-async-handler";
 import User from "../models/userModel.js";
 import bcrypt from "bcryptjs";
 import generateToken from "../utils/generateToken.js";
+import Token from "../models/token.js";
+import crypto from "crypto";
+import sendEmail from "../utils/sendEmail.js";
 
 // login the user get JWT token (/api/auth/login)Public access
 const loginUser = asyncHandler(async (req, res) => {
@@ -55,6 +58,13 @@ const registerUser = asyncHandler(async (req, res) => {
   if (savedUser) {
     generateToken(res, savedUser._id);
 
+    const token = await new Token({
+      userId: user._id,
+      token: crypto.randomBytes(32).toString("hex"),
+    }).save();
+    const url = `${process.env.BASE_URL}auth/signup/${savedUser._id}/verify/${token.token}`;
+    await sendEmail(user.email, "Verify Email", url);
+
     res.status(201).json({
       _id: savedUser._id,
       name: savedUser.name,
@@ -63,10 +73,51 @@ const registerUser = asyncHandler(async (req, res) => {
       city: savedUser.city,
       job: savedUser.job,
       phoneNumber: savedUser.phoneNumber,
+      message: "An email sent to your account",
     });
   } else {
+    s;
     res.status(400);
     throw new Error("Invalid user data");
+  }
+});
+
+const verifyEmail = asyncHandler(async (req, res) => {
+  const { userId, token } = req.params;
+
+  console.log(
+    `Verification request received for userId: ${userId} with token: ${token}`
+  );
+
+  try {
+    console.log(`Looking for user with ID: ${userId}`);
+    const user = await User.findById(userId);
+
+    if (!user) return res.status(400).send({ message: "User not found" });
+
+    const tokenNew = await Token.findOne({
+      userId,
+      token: token,
+    });
+    if (!tokenNew) {
+      res.status(400).send({ message: "Invalid link" });
+      console.log("TOKEN NOT FOUND");
+    }
+
+    // await User.updateOne({ _id: userId, verified: true });
+    if (user) {
+      user.verified = true;
+      await user.save();
+    }
+
+    console.log("Updated user= ", user);
+
+    // delete token
+    await Token.findByIdAndDelete(userId);
+
+    return res.status(200).send({ message: "Email verified successfully" });
+  } catch (error) {
+    console.error(`Error during email verification: ${error.message}`, error);
   }
 });
 
@@ -114,13 +165,8 @@ const updateProfile = asyncHandler(async (req, res) => {
     user.phoneNumber = req.body.phoneNumber || user.phoneNumber;
 
     if (req.body.password) {
-      // user.password = req.body.password;
-      console.log("before...");
-      console.log("The original password: ", user.password);
-      console.log("The new password: ", req.body.password);
       // hash the new password as well
       user.password = await bcrypt.hash(req.body.password, 10);
-      console.log("After...");
     }
 
     const updatedUser = await user.save();
@@ -149,6 +195,7 @@ const deleteProfile = asyncHandler(async (req, res) => {
 export {
   loginUser,
   registerUser,
+  verifyEmail,
   logoutUser,
   getProfile,
   getUpdateForm,
