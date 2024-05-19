@@ -40,6 +40,7 @@ const Login = () => {
 
   return (
     <div className="form-container" style={{ margin: 30 }}>
+      <h1 style={{ textAlign: "center" }}>Login</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
