@@ -50,6 +50,7 @@ const Signup = () => {
         dispatch(setCredentials({ ...res }));
         navigate("/profile");
       } catch (error) {
+        console.log(error);
         toast.error(error.data.message || error.error);
       }
     }
