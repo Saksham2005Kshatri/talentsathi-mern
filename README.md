@@ -16,17 +16,17 @@ MongoDb is used as the nosql database to store data and browse collections
 
 ## API ENDPOINTS
 
-POST /api/auth/signup: Register a new user.
-POST /api/auth/login: Authenticate a user and return a JWT.
-GET /api/auth/profile: Retrieve the authenticated user's profile information.
-PUT /api/auth/profile: Update the authenticated user's profile information.
-DELETE /api/auth/profile: Delete the authenticated user's account.
+- POST /api/auth/signup: Register a new user.
+- POST /api/auth/login: Authenticate a user and return a JWT.
+- GET /api/auth/profile: Retrieve the authenticated user's profile information.
+- PUT /api/auth/profile: Update the authenticated user's profile information.
+- DELETE /api/auth/profile: Delete the authenticated user's account.
 
 ## GETTING STARTED
 
 ### Clone the git reposity
 
-> git clone https://github.com/Saksham2005Kshatri/talentsathi-mern.git
+> git clone https://github.com/Saksham2005Kshatri/talentsathi-mern.git /
 > cd talentsathi-mern
 
 ### Install package dependencies
@@ -35,4 +35,5 @@ DELETE /api/auth/profile: Delete the authenticated user's account.
 
 ### Run development server
 
-> npm run dev / this line will run both frontend and backend server simultaneously with the help concurrently library
+> npm run dev /
+> this line will run both frontend and backend server simultaneously with the help concurrently library
