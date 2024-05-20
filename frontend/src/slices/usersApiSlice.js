@@ -6,7 +6,6 @@ export const usersApiSlice = apiSlice.injectEndpoints({
     login: builder.mutation({
       query: (data) => ({
         url: `${USERS_URL}/login`,
-
         method: "POST",
         body: data,
       }),
@@ -14,7 +13,6 @@ export const usersApiSlice = apiSlice.injectEndpoints({
     signup: builder.mutation({
       query: (data) => ({
         url: `${USERS_URL}/signup`,
-
         method: "POST",
         body: data,
       }),
@@ -22,14 +20,12 @@ export const usersApiSlice = apiSlice.injectEndpoints({
     logout: builder.mutation({
       query: () => ({
         url: `${USERS_URL}/logout`,
-
         method: "POST",
       }),
     }),
     update: builder.mutation({
       query: (data) => ({
         url: `${USERS_URL}/profile/update`,
-
         method: "PUT",
         body: data,
       }),
@@ -37,7 +33,6 @@ export const usersApiSlice = apiSlice.injectEndpoints({
     delete: builder.mutation({
       query: (data) => ({
         url: `${USERS_URL}/profile/`,
-
         method: "DELETE",
         body: data,
       }),
