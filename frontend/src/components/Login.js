@@ -35,6 +35,7 @@ const Login = () => {
       toast.success(`Welcome Back!`);
     } catch (error) {
       toast.error(error.data.message || error.error);
+      console.log(error.error);
     }
   };
 

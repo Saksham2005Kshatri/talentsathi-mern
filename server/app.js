@@ -8,21 +8,21 @@ import cors from "cors";
 
 dotenv.config();
 
-const port = process.env.PORT || 8000;
-
 connectDB();
 
 const app = express();
 
-app.use(
-  cors({
-    origin: "https://talentsathi-host.onrender.com", // Your frontend URL
-    methods: "GET,POST,PUT,DELETE",
-    credentials: true,
-  })
-);
+const port = process.env.PORT || 8000;
 
-// app.use(cors());
+// app.use(
+//   cors({
+//     origin: "https://talentsathi-host.onrender.com", // Your frontend URL
+//     methods: "GET,POST,PUT,DELETE",
+//     credentials: true,
+//   })
+// );
+
+app.use(cors());
 
 app.use(cookieParser());
 app.use(express.json());
