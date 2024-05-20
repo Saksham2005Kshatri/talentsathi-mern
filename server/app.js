@@ -23,6 +23,8 @@ app.use(express.urlencoded({ extended: true })); // for sending form data
 
 app.use("/api/auth", userRoutes);
 
+const __dirname = path.resolve(); // Ensure __dirname is set correctly
+
 if (process.env.NODE_ENV === "production") {
   const __dirname = path.resolve();
   app.use(express.static(path.join(__dirname, "/frontend/build")));
