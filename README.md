@@ -26,7 +26,7 @@ MongoDb is used as the nosql database to store data and browse collections
 
 ### Clone the git reposity
 
-> git clone https://github.com/Saksham2005Kshatri/talentsathi-mern.git /
+> git clone https://github.com/Saksham2005Kshatri/talentsathi-mern.git \
 > cd talentsathi-mern
 
 ### Install package dependencies
@@ -35,5 +35,6 @@ MongoDb is used as the nosql database to store data and browse collections
 
 ### Run development server
 
-> npm run dev /
-> this line will run both frontend and backend server simultaneously with the help concurrently library
+> npm run dev \
+
+this line will run both frontend and backend server simultaneously with the help concurrently library
