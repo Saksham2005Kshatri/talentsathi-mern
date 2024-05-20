@@ -5,7 +5,6 @@ import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import connectDB from "./config/db.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-// import corsOptions from "./config/corsOptions.js";
 
 dotenv.config();
 
@@ -15,9 +14,13 @@ connectDB();
 
 const app = express();
 
-// app.use(cors(corsOptions));
-app.use(cors());
-
+app.use(
+  cors({
+    origin: "https://talentsathi-mern3.onrender.com", // Your frontend URL
+    methods: "GET,POST,PUT,DELETE",
+    credentials: true,
+  })
+);
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // for sending form data
