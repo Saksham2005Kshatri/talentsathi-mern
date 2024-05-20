@@ -1,7 +1,7 @@
 import { fetchBaseQuery, createApi } from "@reduxjs/toolkit/query/react";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "https://talentsathi-api.onrender.com/api",
+  baseUrl: "",
 });
 
 export const apiSlice = createApi({
