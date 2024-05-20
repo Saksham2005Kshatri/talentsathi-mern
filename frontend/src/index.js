@@ -17,6 +17,11 @@ import SignupScreen from "./screens/SignupScreen.js";
 import ProfileScreen from "./screens/ProfileScreen.js";
 import UpdateScreen from "./screens/UpdateScreen.js";
 import PrivateRoute from "./components/PrivateRoute.js";
+import { disableReactDevTools } from "@fvilers/disable-react-devtools";
+
+if (process.env.NODE_ENV === "production") {
+  disableReactDevTools();
+}
 
 const router = createBrowserRouter(
   createRoutesFromElements(
