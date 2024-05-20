@@ -22,7 +22,13 @@ const port = process.env.PORT || 8000;
 //   })
 // );
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://talentsathi-host.onrender.com", // Your frontend URL
+    methods: "GET,POST,PUT,DELETE",
+    credentials: true,
+  })
+);
 
 app.use(cookieParser());
 app.use(express.json());
