@@ -5,7 +5,6 @@ import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import connectDB from "./config/db.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import path from "path";
 import corsOptions from "./config/corsOptions.js";
 
 dotenv.config();
@@ -26,16 +25,7 @@ app.use("/api/auth", userRoutes);
 
 const __dirname = path.resolve(); // Ensure __dirname is set correctly
 
-if (process.env.NODE_ENV === "production") {
-  const __dirname = path.resolve();
-  app.use(express.static(path.join(__dirname, "/frontend/build")));
-
-  app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
-  );
-} else {
-  app.get("/", (req, res) => res.send("<h1>Hello world</h1>"));
-}
+app.get("/", (req, res) => res.send("<h1>Hello world</h1>"));
 
 app.use(notFound);
 app.use(errorHandler);
