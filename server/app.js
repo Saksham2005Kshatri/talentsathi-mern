@@ -23,8 +23,6 @@ app.use(express.urlencoded({ extended: true })); // for sending form data
 
 app.use("/api/auth", userRoutes);
 
-const __dirname = path.resolve(); // Ensure __dirname is set correctly
-
 app.get("/", (req, res) => res.send("<h1>Hello world</h1>"));
 
 app.use(notFound);
