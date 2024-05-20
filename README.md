@@ -19,7 +19,7 @@ MongoDb is used as the nosql database to store data and browse collections
 - POST /api/auth/signup: Register a new user.
 - POST /api/auth/login: Authenticate a user and return a JWT.
 - GET /api/auth/profile: Retrieve the authenticated user's profile information.
-- PUT /api/auth/profile: Update the authenticated user's profile information.
+- PUT /api/auth/profile/update: Update the authenticated user's profile information.
 - DELETE /api/auth/profile: Delete the authenticated user's account.
 
 ## GETTING STARTED
