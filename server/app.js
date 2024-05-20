@@ -16,11 +16,14 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://talentsathi-mern3.onrender.com", // Your frontend URL
+    origin: "https://talentsathi-host.onrender.com", // Your frontend URL
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
   })
 );
+
+// app.use(cors());
+
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // for sending form data
