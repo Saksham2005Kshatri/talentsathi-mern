@@ -32,6 +32,13 @@ const port = process.env.PORT || 8000;
 // );
 
 // app.use(cors(corsOptions));
+// app.use(
+//   cors({
+//     origin: "https://talentsathi-final.onrender.com", // your frontend URL
+//     credentials: true,
+//   })
+// );
+
 app.use(
   cors({
     origin: "https://talentsathi-final.onrender.com", // your frontend URL
