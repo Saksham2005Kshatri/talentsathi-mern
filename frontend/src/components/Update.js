@@ -64,7 +64,7 @@ const Update = () => {
           job,
           phoneNumber,
         }).unwrap();
-        dispatch(setCredentials({ ...res }));
+        dispatch(setCredentials(res));
         navigate("/profile");
         toast.success("Profile Updated");
       } catch (error) {
