@@ -15,33 +15,9 @@ const app = express();
 
 const port = process.env.PORT || 8000;
 
-// app.use(
-//   cors({
-//     origin: "https://talentsathi-host.onrender.com", // Your frontend URL
-//     methods: "GET,POST,PUT,DELETE",
-//     credentials: true,
-//   })
-// );
-
-// app.use(
-//   cors({
-//     origin: "http://localhost:3000", // Your frontend URL
-//     methods: "GET,POST,PUT,DELETE",
-//     credentials: true,
-//   })
-// );
-
-// app.use(cors(corsOptions));
-// app.use(
-//   cors({
-//     origin: "https://talentsathi-final.onrender.com", // your frontend URL
-//     credentials: true,
-//   })
-// );
-
 app.use(
   cors({
-    origin: "https://talentsathi-final.onrender.com", // your frontend URL
+    origin: "https://talentsathi-final-1.onrender.com", // your frontend URL
     credentials: true,
   })
 );
