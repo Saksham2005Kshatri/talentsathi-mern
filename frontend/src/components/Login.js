@@ -30,11 +30,12 @@ const Login = () => {
     event.preventDefault();
     try {
       const res = await login({ email, password }).unwrap(); // unwrap the promise
+      console.log("THIS IS THE RESPONSE FROM LOGIN: ", res);
       dispatch(setCredentials({ ...res }));
       navigate("/profile");
       toast.success(`Welcome Back!`);
     } catch (error) {
-      toast.error(error.data.message || error.error);
+      toast.error(error.error);
       console.log(error.error);
     }
   };

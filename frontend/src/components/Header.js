@@ -29,7 +29,7 @@ const Header = () => {
   };
 
   return (
-    <Navbar bg="dark" className="mb-5 " variant="dark" collapseOnSelect>
+    <Navbar bg="dark" className="mb-5 navbar" variant="dark" collapseOnSelect>
       <Container>
         <LinkContainer to="/">
           <Navbar.Brand>Talentsathi-MERN</Navbar.Brand>

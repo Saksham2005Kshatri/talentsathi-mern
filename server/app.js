@@ -5,6 +5,7 @@ import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import connectDB from "./config/db.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import corsOptions from "./config/corsOptions.js";
 
 dotenv.config();
 
@@ -22,13 +23,15 @@ const port = process.env.PORT || 8000;
 //   })
 // );
 
-app.use(
-  cors({
-    origin: "https://talentsathi-host.onrender.com", // Your frontend URL
-    methods: "GET,POST,PUT,DELETE",
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: "http://localhost:3000", // Your frontend URL
+//     methods: "GET,POST,PUT,DELETE",
+//     credentials: true,
+//   })
+// );
+
+app.use(cors(corsOptions));
 
 app.use(cookieParser());
 app.use(express.json());
