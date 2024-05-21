@@ -2,7 +2,7 @@ import { fetchBaseQuery, createApi } from "@reduxjs/toolkit/query/react";
 
 const baseQuery = fetchBaseQuery({
   // baseUrl: "https://localhost.onrender.com/api",
-  baseUrl: "https:///talentsathi-api-2.onrender.com",
+  baseUrl: "https:///talentsathi-api-2.onrender.com/api",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth.token;
