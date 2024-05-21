@@ -69,6 +69,7 @@ const Update = () => {
         navigate("/profile");
         toast.success("Profile Updated");
       } catch (error) {
+        console.error(error);
         toast.error(error.error);
       }
     }
