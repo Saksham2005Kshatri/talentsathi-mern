@@ -31,7 +31,13 @@ const port = process.env.PORT || 8000;
 //   })
 // );
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+app.use(
+  cors({
+    origin: "http://localhost:3000", // your frontend URL
+    credentials: true,
+  })
+);
 
 app.use(cookieParser());
 app.use(express.json());
